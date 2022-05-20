@@ -1,6 +1,6 @@
 module "network" {
   source  = "terraform-google-modules/network/google"
-  version = "5.0.0"
+  version = "3.4.0"
   # insert the 3 required variables here
   project_id   = var.project
   network_name = "humble-csa-network"
