@@ -2,18 +2,18 @@ module "vpc" {
     source  = "terraform-google-modules/network/google"
     version = "~> 4.0"
 
-    project_id   = ""
-    network_name = "example-vpc"
+    project_id   = var.project
+    network_name = "humble-csa-network"
     routing_mode = "GLOBAL"
 
     subnets = [
         {
-            subnet_name           = "humble-csa-subnet-01"
+            subnet_name           = "humble-csa-01-subnet"
             subnet_ip             = "10.10.10.0/24"
             subnet_region         = var.region
         },
         {
-            subnet_name           = "subnet-02"
+            subnet_name           = "humble-csa-02-subnet"
             subnet_ip             = "10.10.20.0/24"
             subnet_region         = "us-west1"
             subnet_private_access = "true"
@@ -21,7 +21,7 @@ module "vpc" {
             description           = "This subnet has a description"
         },
         {
-            subnet_name               = "subnet-03"
+            subnet_name               = "humble-csa-03-subnet"
             subnet_ip                 = "10.10.30.0/24"
             subnet_region             = "us-west1"
             subnet_flow_logs          = "true"
@@ -34,7 +34,7 @@ module "vpc" {
     secondary_ranges = {
         subnet-01 = [
             {
-                range_name    = "subnet-01-secondary-01"
+                range_name    = "humble-csa-subnet-01-secondary-01"
                 ip_cidr_range = "192.168.64.0/24"
             },
         ]
